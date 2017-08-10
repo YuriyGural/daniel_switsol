@@ -20,14 +20,34 @@ app_include_js = "/assets/js/switsol.desk.min.js"
 
 
 
+<<<<<<< HEAD
 fixtures = ['Custom Field', 'Property Setter', "Custom Script"]
+=======
+fixtures = ['Custom Field', 'Property Setter', "Print Format","Workflow","Workflow State","Workflow Action"]
+
+>>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
 # include js, css files in header of web template
 # web_include_css = "/assets/switsol/css/switsol.css"
 # web_include_js = "/assets/switsol/js/switsol.js"
 
 doctype_js = {
+<<<<<<< HEAD
     "Timesheet":["custom_script/timesheet.js"],
     "User":["custom_script/user.js"]
+=======
+    "Contact":["custom_script_voip/contact.js"],
+    "Sales Partner":["custom_script_voip/sales_partner.js"],
+    "Supplier":["custom_script_voip/supplier.js"],
+    "Timesheet":["custom_script_voip/timesheet.js"],
+    "User":["custom_script_voip/user.js"],
+    # "Customer":["custom_script_voip/customer.js"],
+    "Employee":["custom_script_project/employee.js"],
+    "Quotation":["custom_script_project/quotation.js"],
+    "Sales Order":["custom_script_project/sales_order.js"],
+    "Sales Invoice":["custom_script_project/sales_invoice.js"],
+    "Journal Entry": ["custom_script_project/journal_entry.js"]
+    # "Leave Application":["custom_script_project/leave_application.js"]
+>>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
 }
 #"Project":["custom_script/project.js"],
 
@@ -69,9 +89,11 @@ doctype_js = {
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
+permission_query_conditions = {
+	"Leave Application": "switsol.custom_script_project.leave_application.get_permission_query_conditions",
+}
+
+
 #
 # has_permission = {
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
@@ -81,13 +103,17 @@ doctype_js = {
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+		"Leave Application": {
+        "on_cancel": "switsol.custom_script_project.leave_application.on_cancel"
+        },
+        "Customer":{
+            "onload": "switsol.custom_script_project.customer.onload"
+        },
+        "GL Entry":{
+            "before_submit": "switsol.custom_script_project.gl_entry.before_submit"
+        }
+}
 
 # Scheduled Tasks
 # ---------------
@@ -122,5 +148,5 @@ doctype_js = {
 # 	"frappe.desk.doctype.event.event.get_events": "switsol.event.get_events"
 # }
 override_whitelisted_methods = {
-    "frappe.utils.print_format.download_pdf":"switsol.custom_script.project.download_pdf"
+    "frappe.utils.print_format.download_pdf":"switsol.custom_script_project.project.download_pdf"
 }
