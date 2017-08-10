@@ -8,12 +8,6 @@
   "description": null, 
   "docstatus": 0, 
   "doctype": "Custom Field", 
-<<<<<<< HEAD
-  "dt": "Timesheet", 
-  "fieldname": "signature_json", 
-  "fieldtype": "Long Text", 
-  "hidden": 1, 
-=======
   "dt": "Journal Entry Account", 
   "fieldname": "voucher_type", 
   "fieldtype": "Data", 
@@ -162,28 +156,20 @@
   "fieldname": "col_brek_2", 
   "fieldtype": "Column Break", 
   "hidden": 0, 
->>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
   "ignore_user_permissions": 0, 
   "ignore_xss_filter": 0, 
   "in_filter": 0, 
   "in_list_view": 0, 
   "in_standard_filter": 0, 
-<<<<<<< HEAD
-  "insert_after": "amended_from", 
-  "label": "Signature Json", 
-  "modified": "2016-11-09 14:52:05.882286", 
-  "name": "Timesheet-signature_json", 
-=======
   "insert_after": "paid_amount", 
   "label": "", 
   "modified": "2017-07-04 10:43:40.156389", 
   "name": "Customer-col_brek_2", 
->>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
   "no_copy": 0, 
   "options": null, 
   "permlevel": 0, 
   "precision": "", 
-  "print_hide": 1, 
+  "print_hide": 0, 
   "print_hide_if_no_value": 0, 
   "print_width": null, 
   "read_only": 0, 
@@ -202,27 +188,15 @@
   "description": null, 
   "docstatus": 0, 
   "doctype": "Custom Field", 
-<<<<<<< HEAD
-  "dt": "Timesheet", 
-  "fieldname": "signature", 
-  "fieldtype": "HTML", 
-=======
   "dt": "Customer", 
   "fieldname": "balance_amount", 
   "fieldtype": "Currency", 
->>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
   "hidden": 0, 
   "ignore_user_permissions": 0, 
   "ignore_xss_filter": 0, 
   "in_filter": 0, 
   "in_list_view": 0, 
   "in_standard_filter": 0, 
-<<<<<<< HEAD
-  "insert_after": "signature_json", 
-  "label": "Signature", 
-  "modified": "2016-11-09 14:52:06.311375", 
-  "name": "Timesheet-signature", 
-=======
   "insert_after": "col_brek_2", 
   "label": "Balance Amount", 
   "modified": "2017-07-04 10:43:40.394128", 
@@ -263,7 +237,6 @@
   "label": "Advance Amount", 
   "modified": "2017-07-04 11:15:49.689842", 
   "name": "Customer-advance_amount", 
->>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
   "no_copy": 0, 
   "options": null, 
   "permlevel": 0, 
@@ -287,12 +260,6 @@
   "description": null, 
   "docstatus": 0, 
   "doctype": "Custom Field", 
-<<<<<<< HEAD
-  "dt": "Timesheet", 
-  "fieldname": "signatre_svg", 
-  "fieldtype": "Small Text", 
-  "hidden": 1, 
-=======
   "dt": "Quotation", 
   "fieldname": "predefined_text_container_ad", 
   "fieldtype": "Link", 
@@ -333,23 +300,15 @@
   "fieldname": "advertising", 
   "fieldtype": "Text Editor", 
   "hidden": 0, 
->>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
   "ignore_user_permissions": 0, 
   "ignore_xss_filter": 0, 
   "in_filter": 0, 
   "in_list_view": 0, 
   "in_standard_filter": 0, 
-<<<<<<< HEAD
-  "insert_after": "signature", 
-  "label": "SIgnatre SVG", 
-  "modified": "2016-11-09 14:52:06.655015", 
-  "name": "Timesheet-signatre_svg", 
-=======
   "insert_after": "advertising_sb", 
   "label": "", 
   "modified": "2017-06-12 13:12:35.909567", 
   "name": "Quotation-advertising", 
->>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
   "no_copy": 0, 
   "options": null, 
   "permlevel": 0, 
@@ -373,36 +332,21 @@
   "description": null, 
   "docstatus": 0, 
   "doctype": "Custom Field", 
-<<<<<<< HEAD
-  "dt": "Timesheet Detail", 
-  "fieldname": "customer", 
-  "fieldtype": "Link", 
-=======
   "dt": "Quotation", 
   "fieldname": "advertising_sb", 
   "fieldtype": "Section Break", 
->>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
   "hidden": 0, 
   "ignore_user_permissions": 0, 
   "ignore_xss_filter": 0, 
   "in_filter": 0, 
   "in_list_view": 0, 
   "in_standard_filter": 0, 
-<<<<<<< HEAD
-  "insert_after": "completed_qty", 
-  "label": "Customer", 
-  "modified": "2016-09-09 14:42:20.263712", 
-  "name": "Timesheet Detail-customer", 
-  "no_copy": 0, 
-  "options": "Customer", 
-=======
   "insert_after": "employee_signature_value", 
   "label": "Advertising", 
   "modified": "2017-06-12 13:13:23.486207", 
   "name": "Quotation-advertising_sb", 
   "no_copy": 0, 
   "options": null, 
->>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
   "permlevel": 0, 
   "precision": "", 
   "print_hide": 0, 
@@ -424,12 +368,6 @@
   "description": null, 
   "docstatus": 0, 
   "doctype": "Custom Field", 
-<<<<<<< HEAD
-  "dt": "Timesheet", 
-  "fieldname": "signature_time", 
-  "fieldtype": "Datetime", 
-  "hidden": 0, 
-=======
   "dt": "Employee", 
   "fieldname": "no_birthday_reminder_mail", 
   "fieldtype": "Check", 
@@ -470,18 +408,11 @@
   "fieldname": "workflow_state", 
   "fieldtype": "Link", 
   "hidden": 1, 
->>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
   "ignore_user_permissions": 0, 
   "ignore_xss_filter": 0, 
   "in_filter": 0, 
   "in_list_view": 0, 
   "in_standard_filter": 0, 
-<<<<<<< HEAD
-  "insert_after": "signatre_svg", 
-  "label": "", 
-  "modified": "2016-11-09 14:52:06.897849", 
-  "name": "Timesheet-signature_time", 
-=======
   "insert_after": null, 
   "label": "Workflow State", 
   "modified": "2017-04-26 14:29:41.641853", 
@@ -558,7 +489,6 @@
   "label": "Leave Approver", 
   "modified": "2017-04-26 15:09:50.824407", 
   "name": "Leave Application-approver", 
->>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
   "no_copy": 0, 
   "options": "User", 
   "permlevel": 0, 
@@ -572,8 +502,6 @@
   "search_index": 0, 
   "unique": 0, 
   "width": null
-<<<<<<< HEAD
-=======
  }, 
  {
   "allow_on_submit": 0, 
@@ -18502,6 +18430,5 @@
   "search_index": 0, 
   "unique": 0, 
   "width": null
->>>>>>> 366e8c3b8a84412d9f7780e3d6bf5f6380b726c8
  }
 ]
