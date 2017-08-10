@@ -66,6 +66,7 @@ def certificate_creation(**kwargs):
 			certificate.project = kwargs['project_name']
 			certificate.item = kwargs['item']
 			certificate.item_name = item_name if item_name else kwargs.get('item_name')
+			certificate.training_name = kwargs.get('training_name')
 			certificate.training_center = kwargs['training_center']
 			certificate.instructor = data.get('instructor')
 			if data.get('instructor'):
@@ -194,21 +195,18 @@ def get_events(start=None,end=None,filters=None):
 		In rooms_data query:
 		min(pt.start_time) as time
 		group by pt.start_date,p.name
-
-	Mapping of rooms from `tabProject` and `tabRoom` then sorting of rooms according 
-	to training center from `tabRoom` 
-	Sorting Rule:
-		1. Rooms with Training Center Glattbrugg 
-		2. Rooms with Training Center Aarau 
-		3. Rooms with other Training Centers 
-		4. Rooms with Training Center Extern
-	all_rooms query for dispaying all rooms on calendar
 """
 @frappe.whitelist()
-def get_room(get_args,room=None):
+def get_room(get_args,timezone):
 	data = json.loads(get_args)
 	week_start_day = getdate(data.get('start'))
 	week_end_day = getdate(data.get('end'))
+	timezone = json.loads(timezone)
+	conditions = ""
+	if timezone == False:
+		conditions = "pt.start_date > '{0}' and pt.start_date <= '{1}'".format(week_start_day,week_end_day)
+	else:
+		conditions = "pt.start_date >= '{0}' and pt.start_date < '{1}'".format(week_start_day,week_end_day)
 	rooms_data = frappe.db.sql("""select p.name as name,
 							CONVERT(p.max_number_participant, CHAR(50)) as participant,
 							ifnull (p.learning_solution_name,"") as solution_name,
@@ -222,49 +220,16 @@ def get_room(get_args,room=None):
 							pt.parent = p.name and 
 							pt.room = r.name and 
 							pt.start_date is not null and 
-							pt.room != '' and
-							pt.start_date between "{0}" and "{1}"
+							pt.room != '' and {0}
 							group by pt.start_date,p.name
-							order by r.room_name
-							""".format(week_start_day,week_end_day),as_dict=1)
+							order by r.room_name,p.name asc
+							""".format(conditions),as_dict=1,debug=1)
 
-	
 	room_id_list = [data['room_id'].encode('utf-8') for data in rooms_data]
-	
-	if room_id_list:
-		room_ids = ""
-		if len(room_id_list) == 1:
-			room_ids = "where name = '{0}'".format(room_id_list[0])
-		else:
-			room_ids = "where name in {0}".format(tuple(room_id_list))
-
-		center_name = frappe.db.sql("""select name as room_id ,training_center as center 
-										from `tabRoom` {0}
-							""".format(room_ids),as_dict=1)
-
-		center_name = {center['room_id']:center['center'] for center in center_name}
-
-		for row in rooms_data:
-			if row['room_id'] in center_name.keys():
-				row['center'] = center_name[row['room_id']]
-		
-		for row_dict in rooms_data:
-			if row_dict.get('center') == "Glattbrugg (NH)":
-				row_dict['sort_id'] = 1
-			elif row_dict.get('center') == "Aarau (NH)":
-				row_dict['sort_id'] = 2
-			elif row_dict.get('center') == "Extern":
-				row_dict['sort_id'] = 4
-			else:
-				row_dict['sort_id'] = 3
-		import operator
-		rooms_data.sort(key=operator.itemgetter('sort_id'))
 
 	room_data = []
 	room_event_data = []
 	event_index = 1
-
-	rooms_data.sort(key=itemgetter('name'))
 
 	for event_id,row in enumerate(rooms_data):
 		doc = frappe.get_doc("Project",row['name'])
@@ -301,5 +266,5 @@ def get_room(get_args,room=None):
 						 {0} order by room_name""".format(room_ids),as_dict=1)
 	for row in all_rooms:
 			room_data.append({"title":row['room'],"id":row['room']})
-
+			
 	return {'room_data':room_data,'room_event_data':sorted_room_data}
