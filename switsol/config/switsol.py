@@ -5,6 +5,7 @@ from frappe import _
 def get_data(): 
 	return [
 		{
+<<<<<<< HEAD
 			"label": _("Masters"),
 			"icon": "icon-star",
 			"items": [
@@ -43,12 +44,15 @@ def get_data():
 			]
 		},
 		{
+=======
+>>>>>>> master
 			"label": _("Reports"),
 			"icon": "icon-star",
 			"items": [
 				{
 					"type": "report",
 					"is_query_report": True,
+<<<<<<< HEAD
 					"name": "Feedback",
 					"label": _("Feedback"),
 					"description": _("Record of Feed Back"),
@@ -77,6 +81,12 @@ def get_data():
 					"label": _("Daily Unapproved Timesheet Summary"),
 					"description": _("Record of Daily Unapproved Timesheet Summary"),
 					"doctype": "Timesheet",
+=======
+					"name": "Daily Unapproved Timesheet Summary",
+					"label": _("Daily Unapproved Timesheet Summary"),
+					"description": _("Daily Unapproved Timesheet Summary"),
+					"doctype": "Daily Unapproved Timesheet Summary",
+>>>>>>> master
 				}
 			]
 		},
